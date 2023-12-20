@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
+
+.container {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 600px;
+    min-width: 300px;
+    height: auto;
+    margin-top: 50px;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: start;
+    width: 100%;
+    min-height: 200px;
+}
+
+.message {
+    box-sizing: border-box;
+    display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 7px 14px;
+    padding: 10px;
+    width: calc(100% - 28px);
+}
+
+.message-data {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}   
+
+.message-coords {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.message-time {
+    width: 20%;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.send-area {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    border-top: 2px solid black;
+}
+
+.send-form {
+    width: 75%;
+    height: 100%;
+}
+
+.form-input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-right: 2px solid black;
+    padding-left: 7px;
+}
+
+.form-input:active, .form-input:focus{
+    outline: none;
+}
+
+.buttons {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.audio-stats {
+    display: flex;
+    flex-direction: row;
+}
+
+.type-btn {
+    margin: 5px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-size: 80%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.audio-btn {
+    background-image: url('../img/mirco.png');
+}
+
+.send-form-timer {
+    margin: 0 5px;
+    align-self: center;
+}
+
+.video-btn {
+    background-image: url('../img/video.png');
+}
+
+/* popup styles*/
+.popup-input {
+    margin-top: 15px;
+    font-size: 30px;
+    border-radius: 20px;
+    padding: 5px 20px
+}
+
+.popup-actions {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.popup-button {
+    font-size: 20px;
+    padding: 7px 15px;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.popup-button:hover {
+    cursor: pointer;
+    background-color: #dedede;
+}
+
+.popup-button:active {
+    background-color: #dedede;
+}
+
+.popup, .alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    opacity: 0; 
+    pointer-events: none; 
+    transition: 0.5s all;
+}
+
+.popup.active, .alert.active { 
+    opacity: 1; 
+    pointer-events: all; 
+    transition: 0.5s all;
+}
+
+.list-popup {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    border: 3px solid black;
+    max-width: 800px;
+    height: 450px;
+    justify-content: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    background: #fff;
+    width: 400px;
+    padding: 25px;
+    transition: 0.5s all;
+}
+
+.alert-popup {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    border: 3px solid black;
+    max-width: 400px;
+    height: 200px;
+    justify-content: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); 
+    background: #fff;
+    width: 400px;
+    padding: 25px;
+    transition: 0.5s all;
+}
+
+.list-popup.active, .alert-popup.active{ 
+    transform: translate(-50%, -50%) scale(1); 
+    transition: 0.5s all;
+}
+
+.arrow {
+    width: fit-content;
+    font-size: 20px;
+	position: relative;
+    color: rgb(192, 31, 31);
+	border-radius: 3px;   
+    font-family: "FreeMono", monospace;
+    font-weight: normal;
+}
