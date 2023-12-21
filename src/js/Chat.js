@@ -141,6 +141,12 @@ export default class Chat {
     });
   }
 
+  getAudioTime(time) {
+    let min = Math.floor(time / 60, 1)
+    let sec = Math.floor(time % 60, 1)
+    return `${min < 10? "0": ''}${min}:${sec < 10? "0": ''}${sec}`
+  }
+
   showAlert() {
     this.alertPopup.classList.add("active");
     this.alertPopup.querySelector(".alert-popup").classList.add("active");
@@ -161,11 +167,15 @@ export default class Chat {
           audio: true,
         });
         this.showAudioStats();
+        let audioSeconds = 0
         const audioRecorder = new MediaRecorder(stream);
         const chunks = [];
 
         audioRecorder.addEventListener("start", (ev) => {
-          console.log("start");
+          this.timerInterval = setInterval(() => {
+            audioSeconds++;
+            this.timerFolder.textContent = this.getAudioTime(audioSeconds);
+          }, 1000);
         });
 
         audioRecorder.addEventListener("dataavailable", (ev) => {
@@ -187,6 +197,7 @@ export default class Chat {
             stream.getTracks().forEach((track) => track.stop());
             this.sendButtons.removeChild(this.audioStats);
             this.audioBtn.style.display = "block";
+            clearInterval(this.timerInterval)
 
             this.getCurrentGeo().then((data) => {
               if (data) {
@@ -203,6 +214,7 @@ export default class Chat {
             stream.getTracks().forEach((track) => track.stop());
             this.sendButtons.removeChild(this.audioStats);
             this.audioBtn.style.display = "block";
+            clearInterval(this.timerInterval)
           });
       } catch (error) {
         this.showAlert();
@@ -217,10 +229,11 @@ export default class Chat {
       "beforeend",
       `
     <button class="type-btn apply-audio-btn"><strong>&#10003;</strong></button>
-    <div class="send-form-timer">00:05</div>
+    <div class="send-form-timer">00:00</div>
     <button class="type-btn cancel-audio-btn"><strong>&#10007;</strong></button>`
     );
     this.audioBtn.style.display = "none";
     this.sendButtons.appendChild(this.audioStats);
+    this.timerFolder = document.querySelector('.send-form-timer');
   }
 }
