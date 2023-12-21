@@ -142,9 +142,9 @@ export default class Chat {
   }
 
   getAudioTime(time) {
-    let min = Math.floor(time / 60, 1)
-    let sec = Math.floor(time % 60, 1)
-    return `${min < 10? "0": ''}${min}:${sec < 10? "0": ''}${sec}`
+    let min = Math.floor(time / 60, 1);
+    let sec = Math.floor(time % 60, 1);
+    return `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
   }
 
   showAlert() {
@@ -167,7 +167,7 @@ export default class Chat {
           audio: true,
         });
         this.showAudioStats();
-        let audioSeconds = 0
+        let audioSeconds = 0;
         const audioRecorder = new MediaRecorder(stream);
         const chunks = [];
 
@@ -197,7 +197,7 @@ export default class Chat {
             stream.getTracks().forEach((track) => track.stop());
             this.sendButtons.removeChild(this.audioStats);
             this.audioBtn.style.display = "block";
-            clearInterval(this.timerInterval)
+            clearInterval(this.timerInterval);
 
             this.getCurrentGeo().then((data) => {
               if (data) {
@@ -214,7 +214,7 @@ export default class Chat {
             stream.getTracks().forEach((track) => track.stop());
             this.sendButtons.removeChild(this.audioStats);
             this.audioBtn.style.display = "block";
-            clearInterval(this.timerInterval)
+            clearInterval(this.timerInterval);
           });
       } catch (error) {
         this.showAlert();
@@ -234,6 +234,6 @@ export default class Chat {
     );
     this.audioBtn.style.display = "none";
     this.sendButtons.appendChild(this.audioStats);
-    this.timerFolder = document.querySelector('.send-form-timer');
+    this.timerFolder = document.querySelector(".send-form-timer");
   }
 }
