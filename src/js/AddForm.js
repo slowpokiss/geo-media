@@ -27,7 +27,6 @@ export default class AddForm {
   }
 
   checkFormValidity(elements) {
-    console.log(elements);
     return ![...elements].some((el) => {
       return Object.keys(ValidityState.prototype).some((key) => {
         if (!el.name) return;
